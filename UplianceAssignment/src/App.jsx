@@ -1,32 +1,40 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { AuthProvider } from './components/AuthContext';
-import PrivateRoute from './components/PrivateRoute';
-import LoginPage from './pages/LoginPage';
-
-const theme = createTheme();
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Userdata from './pages/Userdata';
+import Counter from './pages/Counter';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={
-              <PrivateRoute>
-                  <Routes>
-                    {/* <Route path="/counter" element={<Counter />} />
-                    <Route path="/form" element={<UserForm />} />
-                    <Route path="/dashboard" element={<Dashboard />} /> */}
-                  </Routes>
-                
-              </PrivateRoute>
-            } />
-          </Routes>
-        </Router>
-      </AuthProvider>
-    </ThemeProvider>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/userdata"
+        element={
+          <ProtectedRoute>
+            <Userdata />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/counter"
+        element={
+          <ProtectedRoute>
+            <Counter />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
 
