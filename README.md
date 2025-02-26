@@ -54,3 +54,10 @@ Recommended Improvements
 - Implement JWT refresh mechanism
 - Add CSRF protection
 - Encrypt sensitive localStorage data
+
+Steps to Run the project localy -
+
+- Download code, unzip the file.
+- Open code in any code editor like vscode.
+- In the terminal write npm install
+- Then npm run dev
