@@ -1,5 +1,5 @@
 Component Hierarchy
-Copy
+
 - App (Root)
   ├─ Login (Public Route)
   └─ ProtectedRoute
