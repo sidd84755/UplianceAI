@@ -1,12 +1,11 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+// components/ProtectedRoute.jsx
+import { Navigate, Outlet } from 'react-router-dom';
 
-const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem("googleToken");
-  if (!token) {
-    return <Navigate to="/" replace />;
-  }
-  return children;
+const ProtectedRoute = () => {
+  // Replace this with your actual authentication check
+  const isAuthenticated = !!localStorage.getItem('googleToken');
+
+  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
 };
 
 export default ProtectedRoute;
